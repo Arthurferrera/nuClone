@@ -7,6 +7,6 @@ export const Container = styled.ScrollView.attrs({
 `;
 
 export const Code = styled.View`
-  backgroud: #FFF;
+  background: #FFF;
   padding: 10px;
 `;
