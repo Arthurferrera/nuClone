@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import Menu from '~/components/Menu';
 import Header from '~/components/Header';
@@ -15,10 +16,13 @@ import {
   Description,
   CardFooter,
   Annotation,
+  CardHeaderText,
 } from './styles';
 
 export default function Main() {
   let offset = 0;
+  let visibilityMoney = true;
+
   const translateY = new Animated.Value(0);
   const animatedEvent = Animated.event(
     [
@@ -47,15 +51,14 @@ export default function Main() {
       }
 
       Animated.timing(translateY, {
-        toValue: opened ? 380 : 0,
+        toValue: opened ? 420 : 0,
         duration: 400,
         useNativeDriver: true,
       }).start(() => {
-        offset = opened ? 380 : 0;
+        offset = opened ? 420 : 0;
         translateY.setOffset(offset);
         translateY.setValue(0);
       });
-
     }
   }
 
@@ -74,8 +77,8 @@ export default function Main() {
               transform: [
                 {
                   translateY: translateY.interpolate({
-                    inputRange: [-350, 0, 380],
-                    outputRange: [-50, 0, 380],
+                    inputRange: [-350, 0, 420],
+                    outputRange: [-50, 0, 420],
                     extrapolate: 'clamp',
                   }),
                 },
@@ -83,20 +86,39 @@ export default function Main() {
             }}>
             <CardHeader>
               <Icon name="attach-money" size={28} color="#666" />
-              <Icon name="visibility-off" size={28} color="#666" />
+              <CardHeaderText>Conta</CardHeaderText>
+              <Icon
+                onPress={() => {
+                  visibilityMoney = !visibilityMoney;
+                  console.log(visibilityMoney);
+                }}
+                name="visibility-off"
+                size={28}
+                color="#666"
+              />
             </CardHeader>
             <CardContent>
               <Title>Saldo disponível</Title>
-              <Description>R$ 236.611,65</Description>
+              {visibilityMoney ? (
+                <Description>R$ 236.611,65</Description>
+              ) : (
+                <Description>NULL</Description>
+              )}
             </CardContent>
             <CardFooter>
+              <Icon
+                name="attach-money"
+                size={20}
+                color="#000"
+                style={{position: 'absolute', top: 32, left: 20}}
+              />
               <Annotation>
-                Transferência de R$ 134.200,00 recebida de TikTok S.A hoje àw 09:00h
+                Transferência de R$ 134.200,00 recebida de TikTok S.A hoje às
+                09:00h
               </Annotation>
             </CardFooter>
           </Card>
         </PanGestureHandler>
-
       </Content>
 
       <Tabs translateY={translateY} />

@@ -58,6 +58,15 @@ export const CardFooter = styled.View`
 `;
 
 export const Annotation = styled.Text`
-  font-size: 12px;
+  font-size: 11px;
   color: #333;
+  margin-left: 20px;
+`;
+
+export const CardHeaderText = styled.Text`
+  flex: 1;
+  font-size: 17px;
+  margin-top: 3px;
+  color: #333;
+  text-align: left;
 `;

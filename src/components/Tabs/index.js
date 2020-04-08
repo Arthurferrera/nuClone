@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Container, TabsContainer, TabItem, TabText} from './styles';
+import {StyleSheet} from 'react-native';
 
 export default function Tabs({translateY}) {
   return (
@@ -23,6 +24,26 @@ export default function Tabs({translateY}) {
       }}>
       <TabsContainer>
         <TabItem>
+          <Icon name="smartphone" size={24} color="#FFF" />
+          <TabText>Recarga de celular</TabText>
+        </TabItem>
+        <TabItem>
+          <Icon name="swap-horiz" size={24} color="#FFF" />
+          <TabText>Ajustar Limite</TabText>
+        </TabItem>
+        <TabItem>
+          <Icon name="lock" size={24} color="#FFF" />
+          <TabText>Bloquear Cartão</TabText>
+        </TabItem>
+        <TabItem>
+          <Icon name="credit-card" size={24} color="#FFF" />
+          <TabText>Cartão Virtual</TabText>
+        </TabItem>
+        <TabItem>
+          <Icon name="help-outline" size={24} color="#FFF" />
+          <TabText>Me ajuda</TabText>
+        </TabItem>
+        <TabItem>
           <Icon name="person-add" size={24} color="#FFF" />
           <TabText>Indicar amigos</TabText>
         </TabItem>
@@ -39,10 +60,24 @@ export default function Tabs({translateY}) {
           <TabText>Transferir</TabText>
         </TabItem>
         <TabItem>
-          <Icon name="lock" size={24} color="#FFF" />
-          <TabText>Bloquear Cartão</TabText>
+          <Icon name="payment" size={24} color="#FFF" />
+          <TabText>Psgar</TabText>
+        </TabItem>
+        <TabItem style={styles.organizeTabs}>
+          <Icon
+            name="format-line-spacing"
+            size={24}
+            color="#FFF"
+          />
+          <TabText>Organizar Atalhos</TabText>
         </TabItem>
       </TabsContainer>
     </Container>
   );
 }
+
+const styles = StyleSheet.create({
+  organizeTabs: {
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  },
+});
